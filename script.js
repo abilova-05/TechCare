@@ -78,7 +78,7 @@ function selectPatients(index) {
         </div>
     `
     profile.innerHTML = kodd;
-    
+
 
     const about = document.getElementById('data2');
 
@@ -106,8 +106,8 @@ function selectPatients(index) {
 
     about.innerHTML = koddd;
 
-    const disease=document.getElementById('data4');
-      
+    const disease = document.getElementById('data4');
+
     let kodddd = `<h3 class="font-bold">Lab Result</h3>`;
 
     arg.lab_results.forEach((item, index) => {
@@ -120,129 +120,122 @@ function selectPatients(index) {
 
     disease.innerHTML = kodddd;
 
-    // const list = document.getElementById('list');
-    // let myChart = null;
-    // let kod = '';
 
-    // people.forEach((elm, i) => {
-    //     kod += `<p onclick='selectPatients(${i})'>${elm.name}</p>`;
-    // });
-    // list.innerHTML = kod;
+    const list = document.getElementById('list');
+    let kod = '';
+    let datas = data[index];
+    console.log(datas);
+    
+        kod += `<p onclick='selectPatients(${index})'>${datas.name}</p>`;
+    list.innerHTML = kod;
 
-//     function selectPatients(i) {
-//         if (myChart) {
-//             myChart.destroy();
-//         }
+    function selectPatients(i) {
+        if (myChart) {
+            myChart.destroy();
+        }
 
-//         let person = data[i];
-//         let newResult = person.diagnosis_history.map(item => item.heart_rate.value);
-//         diagram(newResult);
-//     }
+        let person = data[index];
+        let newResult = person.diagnosis_history.map(item => item.heart_rate.value);
+        diagram(newResult);
+    }
 
-//     function diagram(result) {
-//         const labels = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul'];
-//         const data = {
-//             labels: labels,
-//             datasets: [
-//                 {
-//                     label: 'Dataset 1',
-//                     data: result,
-//                     fill: false,
-//                     borderColor: '#8C6FE6',
-//                     tension: 0.3,
-//                     pointBackgroundColor: '#8C6FE6',
-//                     pointRadius: 6,
-//                     pointHoverRadius: 8,
-//                 },
-//                 {
-//                     label: 'Dataset 2',
-//                     data: [23, 49, 11, 85, 56, 34, 40],
-//                     fill: false,
-//                     pointHoverRadius: 8,
-//                     pointBackgroundColor: '#E66FD2',
-//                     borderColor: '#E66FD2',
-//                     pointRadius: 6,
-//                     tension: 0.3
-//                 }
-//             ]
-//         };
+    function diagram(result) {
+        const labels = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul'];
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Dataset 1',
+                    data: result,
+                    fill: false,
+                    borderColor: '#8C6FE6',
+                    tension: 0.3,
+                    pointBackgroundColor: '#8C6FE6',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                },
+                {
+                    label: 'Dataset 2',
+                    data: [23, 49, 11, 85, 56, 34, 40],
+                    fill: false,
+                    pointHoverRadius: 8,
+                    pointBackgroundColor: '#E66FD2',
+                    borderColor: '#E66FD2',
+                    pointRadius: 6,
+                    tension: 0.3
+                }
+            ]
+        };
 
-//         const config = {
-//             type: 'line',
-//             data: data,
-//             options: {
-//                 plugins: {
-//                     legend: {
-//                         display: false
-//                     },
-//                 }
-//             }
-//         };
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                }
+            }
+        };
 
-//         const ctx = document.getElementById('canvas').getContext('2d');
-//         myChart = new Chart(ctx, config);
-//     }
 
-//     diagram([65, 59, 80, 81, 56, 55, 40]);
+    }
 
-            // const one=document.getElementById("one");
-            // const two=document.getElementById("two");
-            // const three=document.getElementById("three");
+    updateChart([65, 59, 80, 81, 56, 55, 40]);
 
-            // let kod5=`  <img src="img/respiratory rate.svg" class="m-6" alt="">
-            //     <p class="font-bold text-2xl m-2">Respiratory rate</p>
-            //     `;
-            // let kod6=` <img src="img/temperature.svg" class="m-6" alt="">
-            //     <p class="font-bold text-2xl m-2">Temperature</p>
-            //     `;
-            // let kod7=`<img src="img/HeartBPM.svg" class="m-6" alt="">
-            //     <p class="font-bold text-2xl m-2">Heart rate</p>
-            //     `;
+    const one = document.getElementById("one");
+    const two = document.getElementById("two");
+    const three = document.getElementById("three");
+    let arg1 = data[index].diagnosis_history;
+    let firstDiagnosis = arg1[0];
 
-            // arg.diagnosis_history.forEach((item) => {
-            //     kod5 += `
-            //     <h2>${item.respiratory_rate.value}bpm</h2>
-            //     <p>${item.respiratory_rate.levels}</p>
-            //     `;
-            //     kod6 += `
-            //     <h2>${item.temperature.value}bpm</h2>
-            //     <p>${item.temperature.levels}</p>
-            //     `;
-            //     kod7 += `
-            //     <h2>${item.heart_rate.value}bpm</h2>
-            //     <p>${item.heart_rate.levels}</p>
-            //     `;
-
-            // });
-            //  one.innerHTML=kod5;
-            //  two.innerHTML=kod6;
-            //  three.innerHTML=kod7;
-   
-            const one=document.getElementById("one");
-            const two=document.getElementById("two");
-            const three=document.getElementById("three");
-            let arg1 = data[index].diagnosis_history;
-            let firstDiagnosis = arg1[0];
-
-            let kod5=`  <img src="img/respiratory rate.svg" class="m-6" alt="">
+    let kod5 = `  <img src="img/respiratory rate.svg" class="m-6" alt="">
                 <p class="font-bold text-2xl m-2">Respiratory rate</p>
                  <h2 class="font-bold text-3xl m-3">${firstDiagnosis.respiratory_rate.value}bpm</h2>
                 <p class="m-4">${firstDiagnosis.respiratory_rate.levels}</p>`
 
-            let kod6=` <img src="img/temperature.svg" class="m-6" alt="">
+    let kod6 = ` <img src="img/temperature.svg" class="m-6" alt="">
                 <p class="font-bold text-2xl m-2 ">Temperature</p>
                   <h2 class="font-bold text-3xl m-3">${firstDiagnosis.temperature.value}*F</h2>
                 <p class="m-4">${firstDiagnosis.temperature.levels}</p>`;
 
 
-            let kod7=`<img src="img/HeartBPM.svg" class="m-6" alt="">
+    let kod7 = `<img src="img/HeartBPM.svg" class="m-6" alt="">
                 <p class="font-bold text-2xl m-2">Heart rate</p>
                 <h2 class="font-bold text-3xl m-3">${firstDiagnosis.heart_rate.value}bpm</h2>
                 <p class="m-4">${firstDiagnosis.heart_rate.levels}</p>`;
 
-             one.innerHTML=kod5;
-             two.innerHTML=kod6;
-             three.innerHTML=kod7;
-            };
-    show(data);
+    one.innerHTML = kod5;
+    two.innerHTML = kod6;
+    three.innerHTML = kod7;
+};
+show(data);
 
+
+let myChart = null;
+function updateChart(result) {
+    if (myChart) myChart.destroy();
+    const ctx = document.getElementById('canvas').getContext('2d');
+
+    myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            datasets: [{
+                label: 'Blood Pressure',
+                data: result,
+                borderColor: '#8C6FE6',
+                tension: 0.3,
+                pointBackgroundColor: '#8C6FE6',
+                pointRadius: 6,
+                pointHoverRadius: 8,
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { display: true }
+            }
+        }
+    });
+}
